@@ -1,0 +1,27 @@
+{
+  "name": "web3_tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npx hardhat run scripts/deployFundMe.js --network sepolia",
+    "verify": "npx hardhat run scripts/verifyFundMe.js --network sepolia",
+    "verify:retry": "npx hardhat run scripts/verifyWithRetry.js --network sepolia",
+    "verify:timeout": "node scripts/handleTimeout.js",
+    "verify:simple": "node scripts/simpleVerify.js",
+    "verify:manual": "npx hardhat verify --network sepolia 0xf8cF0F94a3e9FC3C3bae76BB52BD533d31D4CBD8 \"10\"",
+    "check:env": "npx hardhat run scripts/checkEnv.js",
+    "compile": "npx hardhat compile",
+    "clean": "npx hardhat clean"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@chainlink/contracts": "^1.4.0",
+    "@chainlink/env-enc": "^1.0.5",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^17.2.2",
+    "hardhat": "^2.22.2"
+  }
+}
