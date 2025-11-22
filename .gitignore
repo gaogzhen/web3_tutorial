@@ -9,6 +9,7 @@ package-lock.json
 # Hardhat files
 /cache
 /artifacts
+/deployments
 
 # TypeChain files
 /typechain
@@ -17,3 +18,5 @@ package-lock.json
 # solidity-coverage files
 /coverage
 /coverage.json
+
+

@@ -24,27 +24,27 @@ contract FundMe {
     address public  owner;
 
     // 合约部署时间
-    uint256 deplomentTimestamp;
+    uint256 public deploymentTimestamp;
     // 合约锁定时间
-    uint256 lockTime;
+    uint256 public lockTime;
 
     address erc20Addr;
 
     bool public getFundSuccess = false;
 
-    constructor(uint256 _lockTime) {
+    constructor(uint256 _lockTime, address _dataFeedAddr) {
         // sepolia testnet
         dataFeed = AggregatorV3Interface(
-            0x694AA1769357215DE4FAC081bf1f309aDC325306
+            _dataFeedAddr
         );
         owner = msg.sender;
-        deplomentTimestamp = block.timestamp;
+        deploymentTimestamp = block.timestamp;
         lockTime = _lockTime;
     }
 
     function fund() external payable {
          // 判断锁定时间
-        require( (block.timestamp < deplomentTimestamp + lockTime), "the lock time is over");
+        require( (block.timestamp < deploymentTimestamp + lockTime), "the lock time is over");
         // 控制台打印等价usd值
         uint256 usdValue = convertEthToUsd(msg.value);
         
@@ -119,7 +119,7 @@ contract FundMe {
 
     modifier windowClosed() {
         // 判断锁定时间
-        require( (block.timestamp > deplomentTimestamp + lockTime), "the lock time is not  over");
+        require( (block.timestamp > deploymentTimestamp + lockTime), "the lock time is not  over");
         _;
     }
 

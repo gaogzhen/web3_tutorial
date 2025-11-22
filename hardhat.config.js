@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox"); // 引入 Hardhat 工具箱
+require("hardhat-deploy");
 require("@chainlink/env-enc").config(); // 加载加密的环境变量
 require("./tasks");
 
@@ -29,5 +30,13 @@ module.exports = {
     // 添加超时和重试配置
     customChains: [], // 可选自定义链配置
     timeout: 120000, // 增加到120秒超时
-  }
+  },
+  namedAccounts: {
+    firstAccount: {
+      default: 0,
+    },
+    secondAccount: {
+      default: 1,
+    },
+  },
 };
